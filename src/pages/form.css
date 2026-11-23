@@ -1,0 +1,325 @@
+
+/* ================================
+   RSVP FORM - ROYAL WEDDING THEME
+================================ */
+
+/* Intro text */
+.reveal-p {
+    font-style: italic;
+    color: var(--text-light);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+}
+
+/* Main RSVP section */
+#rsvp-section {
+    position: relative;
+    width: 100%;
+    padding: 5rem 80px 3rem;
+    background: var(--cream);
+    border-radius: 40px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-warm);
+    overflow: hidden;
+}
+
+/* Subtle decorative inner frame */
+#rsvp-section::before {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border: 1px solid rgba(184, 149, 90, 0.35);
+    border-radius: 30px;
+    pointer-events: none;
+}
+
+/* Form card */
+.form-card {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    background: var(--white);
+    border: 1px solid var(--gold-pale);
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    margin: 0 auto 1.5rem;
+    box-shadow: var(--shadow-warm);
+
+    opacity: 0;
+    transform: translateY(60px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease,
+        box-shadow 0.3s ease;
+}
+
+/* Gold inner border */
+.form-card::before {
+    content: "";
+    position: absolute;
+    inset: 7px;
+    border: 1px solid rgba(184, 149, 90, 0.2);
+    border-radius: 1.1rem;
+    pointer-events: none;
+}
+
+/* Card reveal animation */
+.form-card.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animation delays */
+.reveal-delay-2 {
+    transition-delay: 0.2s;
+}
+
+.reveal-delay-3 {
+    transition-delay: 0.4s;
+}
+
+/* Form title */
+.form-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--terra-dark);
+    margin-bottom: 0.5rem;
+}
+
+/* Subtitle */
+.form-card-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+/* Field labels */
+.field-label {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--terra-dark);
+    display: block;
+    margin-bottom: 0.55rem;
+}
+
+/* Field spacing */
+.field-group {
+    margin-bottom: 1.5rem;
+}
+
+/* Input fields */
+.field-input {
+    width: 100%;
+    background: var(--cream);
+    border: 1px solid transparent;
+    border-bottom: 1.5px solid var(--gold);
+    border-radius: 6px 6px 0 0;
+    padding: 0.85rem 0.75rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.field-input:focus {
+    background: var(--white);
+    border: 1px solid var(--gold-light);
+    border-bottom: 2px solid var(--terra-dark);
+    box-shadow: 0 4px 12px rgba(184, 149, 90, 0.08);
+}
+
+.field-input::placeholder {
+    color: var(--text-light);
+    opacity: 0.7;
+}
+
+/* Text area */
+.text-area {
+    width: 100%;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    color: var(--text-dark);
+    outline: none;
+    resize: vertical;
+    min-height: 110px;
+    transition: all 0.3s ease;
+    line-height: 1.6;
+}
+
+.text-area:focus {
+    background: var(--white);
+    border-color: var(--gold);
+    box-shadow: 0 4px 15px rgba(184, 149, 90, 0.1);
+}
+
+.text-area::placeholder {
+    color: var(--text-light);
+    opacity: 0.7;
+}
+
+/* Small memory text */
+.memory-p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    font-style: italic;
+    margin-top: 0.65rem;
+    line-height: 1.5;
+}
+
+/* Submit button */
+.submit-btn {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    background: var(--terra-dark);
+    color: var(--white);
+    border: 1px solid var(--gold);
+    border-radius: 9999px;
+    padding: 1.1rem;
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.35s ease;
+    box-shadow: var(--shadow-gold);
+}
+
+.submit-btn:hover {
+    background: var(--gold);
+    color: white;
+    border-color: var(--gold-light);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(184, 149, 90, 0.25);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+/* Form response message */
+.form-result {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--terra-dark);
+    margin-top: 1.5rem;
+    margin-bottom: 0.35rem;
+    text-align: center;
+    line-height: 1.5;
+}
+
+/* Focus accessibility */
+.field-input:focus-visible,
+.text-area:focus-visible,
+.submit-btn:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+}
+
+/* ================================
+   MOBILE RESPONSIVENESS
+================================ */
+
+@media (max-width: 768px) {
+
+    #rsvp-section {
+        padding: 4rem 25px 2.5rem;
+        border-radius: 30px;
+    }
+
+    #rsvp-section::before {
+        inset: 10px;
+        border-radius: 23px;
+    }
+
+    .form-card {
+        max-width: 100%;
+        padding: 2rem 1.5rem;
+    }
+
+    .form-card-title {
+        font-size: 1.45rem;
+    }
+
+    .reveal-p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+
+    #rsvp-section {
+        padding: 3.5rem 16px 2rem;
+        border-radius: 24px;
+    }
+
+    #rsvp-section::before {
+        inset: 8px;
+        border-radius: 18px;
+    }
+
+    .form-card {
+        padding: 1.7rem 1.2rem;
+        border-radius: 1.2rem;
+    }
+
+    .form-card::before {
+        inset: 5px;
+    }
+
+    .form-card-title {
+        font-size: 1.35rem;
+    }
+
+    .form-card-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .field-input,
+    .text-area {
+        font-size: 16px;
+    }
+
+    .field-group {
+        margin-bottom: 1.25rem;
+    }
+
+    .submit-btn {
+        padding: 1rem;
+        font-size: 0.68rem;
+    }
+
+    .reveal-p {
+        font-size: 0.95rem;
+    }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .form-card,
+    .submit-btn,
+    .field-input,
+    .text-area {
+        transition: none;
+    }
+
+    .form-card {
+        transform: none;
+    }
+}

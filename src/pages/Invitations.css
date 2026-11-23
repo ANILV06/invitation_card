@@ -1,0 +1,140 @@
+
+/* EVENT DECORATIONS */
+
+.ornament-line svg {
+    color: var(--gold);
+}
+
+.event-subtitle {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 1.25rem;
+}
+
+.event-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.8rem;
+    color: var(--terracotta);
+    margin-bottom: 0.15rem;
+    font-weight: 400;
+}
+
+/* EVENT BLOCK */
+
+.event-block {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto 4rem;
+}
+
+/* VIDEO FRAME */
+
+.event-video-wrap.unlocked {
+    width: 100%;
+    max-height: none;
+    height: auto;
+    position: relative;
+    padding: 7px;
+    border: 1px solid var(--gold);
+    border-radius: 1.7rem;
+    background: var(--cream-2);
+    box-shadow: var(--shadow-gold);
+    overflow: hidden;
+}
+
+/* FULL VIDEO - NO CROPPING */
+
+.event-video-wrap video {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 1.3rem;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-warm);
+    position: relative;
+    background: #1a0d08;
+    transition: none;
+}
+
+/* ROYAL GOLD INNER FRAME */
+
+.event-video-wrap::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    border: 1px solid rgba(184, 149, 90, 0.45);
+    border-radius: 1.4rem;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ROYAL VIDEO CORNERS */
+
+.video-corner {
+    position: absolute;
+    z-index: 2;
+    color: var(--gold-light);
+    font-size: 19px;
+    line-height: 1;
+    pointer-events: none;
+}
+
+.video-corner-tl {
+    top: 10px;
+    left: 11px;
+}
+
+.video-corner-tr {
+    top: 10px;
+    right: 11px;
+    transform: rotate(90deg);
+}
+
+.video-corner-bl {
+    bottom: 10px;
+    left: 11px;
+    transform: rotate(-90deg);
+}
+
+.video-corner-br {
+    bottom: 10px;
+    right: 11px;
+    transform: rotate(180deg);
+}
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 600px) {
+    .event-block {
+        max-width: 100%;
+        margin-bottom: 3rem;
+    }
+
+    .event-title {
+        font-size: 2.5rem;
+    }
+
+    .event-video-wrap.unlocked {
+        padding: 5px;
+        border-radius: 1.3rem;
+    }
+
+    .event-video-wrap video {
+        border-radius: 1rem;
+    }
+
+    .event-video-wrap::after {
+        border-radius: 1rem;
+    }
+
+    .video-corner {
+        font-size: 15px;
+    }
+}

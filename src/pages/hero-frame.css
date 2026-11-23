@@ -1,0 +1,425 @@
+
+.hero-main {
+    background: var(--white);
+    text-align: center;
+    padding: 50px;
+    border-radius: 50px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-warm);
+}
+
+.blessings-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--text-mid);
+    line-height: 1.5;
+    margin-bottom: 1.75rem;
+    padding: 0 1rem;
+}
+
+.family-line {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    line-height: 1.4;
+    margin-top: 0.5rem;
+}
+
+.family-subline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.78rem;
+    font-style: italic;
+    color: var(--text-light);
+    line-height: 1.3;
+    margin-top: 0.2rem;
+}
+
+.ampersand {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.2rem;
+    color: var(--gold);
+    line-height: 1;
+}
+
+.ampersand-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    width: 100%;
+}
+
+.ganesh-icon {
+    width: 50px;
+}
+
+.hero-title {
+    color: var(--text-dark);
+}
+
+.couple-name {
+    font-family: 'Pinyon Script', cursive;
+    font-size: clamp(2rem, 9vw, 3.8rem);
+    line-height: 1.1;
+    display: block;
+    letter-spacing: 0.02em;
+    padding: 0.2rem 0;
+}
+
+.shimmer-gold {
+    background: linear-gradient(
+        105deg,
+        #68745B 15%,
+        #B8955A 35%,
+        #E2CDA7 50%,
+        #B8955A 65%,
+        #68745B 85%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 7s linear infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+
+.couple-block p {
+    font-size: 13px;
+}
+
+.scroll-cue {
+    position: relative;
+    top: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    opacity: 0.7;
+    animation: scrollBounce 2s ease infinite;
+}
+
+@keyframes scrollBounce {
+    0% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(10px);
+    }
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+.scroll-cue p {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--terra-dark);
+}
+
+.scroll-cue svg {
+    color: var(--terra-dark);
+    width: 18px;
+}
+
+.ampersand-line {
+    height: 1px;
+    width: 40px;
+    background: var(--gold-light);
+}
+
+@media (max-width: 768px) {
+    .hero-main {
+        padding: 25px;
+        border-radius: 25px;
+    }
+
+    .blessings-text {
+        font-size: 0.9rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .family-line {
+        font-size: 0.8rem;
+    }
+
+    .family-subline {
+        font-size: 0.7rem;
+    }
+
+    .ampersand {
+        font-size: 1.6rem;
+    }
+
+    .ampersand-wrap {
+        gap: 0.5rem;
+        margin: 1rem 0;
+    }
+
+    .ganesh-icon {
+        width: 35px;
+    }
+
+    .couple-name {
+        font-size: clamp(1.8rem, 8vw, 2.8rem);
+    }
+
+    .couple-block p {
+        font-size: 12px;
+    }
+
+    .scroll-cue {
+        top: 2rem;
+    }
+
+    .scroll-cue p {
+        font-size: 0.5rem;
+    }
+
+    .scroll-cue svg {
+        width: 14px;
+    }
+
+    .ampersand-line {
+        width: 25px;
+    }
+}
+
+
+/* ROYAL HERO DECORATIONS */
+
+.hero-main {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-royal-frame {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    padding: 35px 24px 30px;
+    border: 1px solid var(--gold);
+    border-radius: 38px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 252, 247, 0.97),
+            rgba(248, 243, 233, 0.96)
+        );
+    box-shadow:
+        inset 0 0 0 6px rgba(184, 149, 90, 0.07),
+        inset 0 0 0 7px rgba(184, 149, 90, 0.20),
+        var(--shadow-warm);
+}
+
+/* Decorative corner flourishes */
+
+.hero-corner {
+    position: absolute;
+    color: var(--gold);
+    font-family: serif;
+    font-size: 42px;
+    line-height: 1;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+.hero-corner-tl {
+    top: 12px;
+    left: 16px;
+}
+
+.hero-corner-tr {
+    top: 12px;
+    right: 16px;
+    transform: scaleX(-1);
+}
+
+.hero-corner-bl {
+    bottom: 12px;
+    left: 16px;
+    transform: rotate(180deg);
+}
+
+.hero-corner-br {
+    bottom: 12px;
+    right: 16px;
+    transform: rotate(180deg) scaleX(-1);
+}
+
+/* Top gold ornament */
+
+.hero-top-ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin: 0 auto 18px;
+    max-width: 180px;
+}
+
+.hero-top-ornament span {
+    height: 1px;
+    flex: 1;
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--gold)
+    );
+}
+
+.hero-top-ornament span:last-child {
+    transform: rotate(180deg);
+}
+
+.hero-ornament-diamond {
+    color: var(--gold);
+    font-size: 19px;
+    line-height: 1;
+}
+
+/* Ganesh icon */
+
+.ganesh-icon {
+    display: block;
+    width: 76px;
+    height: auto;
+    object-fit: contain;
+    margin: 0 auto 18px;
+    filter: drop-shadow(0 3px 5px rgba(184, 149, 90, 0.18));
+}
+
+/* Name separator */
+
+.ampersand-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 22px auto;
+}
+
+.ampersand-line {
+    width: 65px;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--gold),
+        transparent
+    );
+}
+
+.ampersand {
+    color: var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+}
+
+/* Bottom ornament */
+
+.hero-bottom-ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 28px auto 18px;
+    max-width: 130px;
+    color: var(--gold);
+}
+
+.hero-bottom-ornament div {
+    width: 55px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.65;
+}
+
+.hero-bottom-ornament span {
+    font-size: 13px;
+}
+
+/* Scroll cue */
+
+.scroll-cue {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    color: var(--terra-dark);
+}
+
+.scroll-cue svg {
+    width: 20px;
+    height: 20px;
+    animation: heroScroll 1.6s ease-in-out infinite;
+}
+
+@keyframes heroScroll {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(6px);
+    }
+}
+
+/* Mobile adjustments */
+
+@media (max-width: 600px) {
+    .hero-royal-frame {
+        padding: 28px 17px 24px;
+        border-radius: 27px;
+    }
+
+    .hero-corner {
+        font-size: 30px;
+    }
+
+    .hero-corner-tl,
+    .hero-corner-bl {
+        left: 9px;
+    }
+
+    .hero-corner-tr,
+    .hero-corner-br {
+        right: 9px;
+    }
+
+    .ganesh-icon {
+        width: 65px;
+        margin-bottom: 14px;
+    }
+
+    .hero-top-ornament {
+        margin-bottom: 14px;
+    }
+
+    .ampersand-wrap {
+        margin: 17px auto;
+    }
+
+    .ampersand-line {
+        width: 42px;
+    }
+
+    .hero-bottom-ornament {
+        margin: 22px auto 14px;
+    }
+}
+

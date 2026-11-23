@@ -1,0 +1,572 @@
+
+/* ================= AUDIO BUTTON ================= */
+
+#audio-btn {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    z-index: 10000;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    border: 1px solid var(--gold-light);
+    border-radius: 50%;
+    background: var(--terra-dark);
+    color: var(--gold-pale);
+    box-shadow: var(--shadow-gold);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    -webkit-appearance: none;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#audio-btn svg {
+    width: 23px;
+    height: 23px;
+}
+
+#audio-btn:hover {
+    background: var(--gold);
+    color: white;
+    transform: scale(1.08);
+}
+
+/* ================= MUSIC FALLBACK ================= */
+
+.music-fallback {
+    position: fixed;
+    right: 25px;
+    bottom: 85px;
+    z-index: 10000;
+    padding: 12px 18px;
+    border: 1px solid var(--gold-light);
+    border-radius: 30px;
+    background: var(--terra-dark);
+    color: white;
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    box-shadow: var(--shadow-gold);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.music-fallback:hover {
+    background: var(--gold);
+}
+
+/* ================= RESPONSIVE OPENING LANDING VIDEO ================= */
+
+#entry-gate {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    width: 100%;
+    height: 100vh;
+    height: 100svh;
+    height: 100dvh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0;
+    padding: 0;
+
+    background: #1a0d08;
+    overflow: hidden;
+
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+#entry-gate .entry-video {
+    position: absolute;
+    inset: 0;
+
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    object-position: center center;
+
+    background: #1a0d08;
+    border: none;
+    outline: none;
+
+    pointer-events: none;
+}
+
+/* ================= MAIN CONTAINER ================= */
+
+.main-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow-x: hidden;
+    isolation: isolate;
+}
+
+/* ================= BACKGROUND VIDEO ================= */
+
+.bg-video {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+    pointer-events: none;
+    -webkit-transform: translateZ(0);
+}
+
+/* ================= APP CONTENT ================= */
+
+.App {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    overflow: hidden;
+}
+
+.content-1,
+.content-2,
+.content-3,
+.content-4,
+.content-5,
+.content-6,
+.content-7 {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+}
+
+/* ================= SECTION PADDING ================= */
+
+.content-1,
+.content-2,
+.content-3,
+.content-4,
+.content-5,
+.content-6 {
+    padding: 60px 20px;
+}
+
+.content-7 {
+    padding: 0;
+}
+
+/* ================= SECTION BACKGROUNDS ================= */
+
+.content-1 {
+    background-color: #fdf0e8a9;
+}
+
+.content-2 {
+    background-color: #fff8f3af;
+}
+
+.content-3 {
+    background-color: var(--cream-2);
+}
+
+.content-4 {
+    background-color: var(--cream);
+}
+
+.content-5 {
+    background-color: var(--cream-2);
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+.content-6 {
+    background-color: var(--cream-2);
+}
+
+.content-7 {
+    background-color: transparent;
+}
+
+/* ================= SECTION ANIMATIONS ================= */
+
+.content-1 {
+    animation: fadeUp 1.2s ease-out both;
+}
+
+.content-2 {
+    animation: fadeScale 1.2s ease-out both;
+    animation-delay: 0.2s;
+}
+
+.content-3 {
+    animation: slideLeft 1.2s ease-out both;
+}
+
+.content-4 {
+    animation: slideRight 1.2s ease-out both;
+}
+
+.content-5 {
+    animation: zoomFade 1.4s ease-out both;
+}
+
+.content-6 {
+    animation: rotateFade 1.2s ease-out both;
+}
+
+.content-7 {
+    animation: simpleFade 1.2s ease-out both;
+}
+
+/* ================= KEYFRAMES ================= */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(60px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes slideLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-80px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideRight {
+    from {
+        opacity: 0;
+        transform: translateX(80px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes zoomFade {
+    from {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes rotateFade {
+    from {
+        opacity: 0;
+        transform: rotate(-3deg) translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: rotate(0) translateY(0);
+    }
+}
+
+@keyframes simpleFade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* ================= FALLING PETALS ================= */
+
+.fall-container {
+    position: fixed;
+    inset: 0;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* ================= TABLET ================= */
+
+@media (max-width: 768px) {
+
+    #audio-btn {
+        right: 18px;
+        bottom: 18px;
+        width: 44px;
+        height: 44px;
+        padding: 10px;
+    }
+
+    #audio-btn svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .music-fallback {
+        right: 18px;
+        bottom: 72px;
+    }
+
+    .content-1,
+    .content-2,
+    .content-3,
+    .content-4,
+    .content-5,
+    .content-6 {
+        padding: 40px 15px;
+    }
+}
+
+/* ================= IPHONE / MOBILE SAFARI ================= */
+
+@media screen and (max-width: 600px) {
+
+    #entry-gate {
+        width: 100%;
+        height: 100vh;
+        height: 100svh;
+        height: 100dvh;
+    }
+
+    #entry-gate .entry-video {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+    }
+
+    .bg-video {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    #audio-btn {
+        right: max(15px, env(safe-area-inset-right));
+        bottom: max(15px, env(safe-area-inset-bottom));
+        width: 42px;
+        height: 42px;
+        padding: 10px;
+    }
+
+    .music-fallback {
+        right: max(15px, env(safe-area-inset-right));
+        bottom: calc(68px + env(safe-area-inset-bottom));
+        font-size: 11px;
+    }
+
+    .main-container,
+    .App {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    .content-1,
+    .content-2,
+    .content-3,
+    .content-4,
+    .content-5,
+    .content-6,
+    .content-7 {
+        box-sizing: border-box;
+        width: 100%;
+    }
+}
+
+/* ================= SMALL IPHONES ================= */
+
+@media (max-width: 360px) {
+
+    #audio-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .music-fallback {
+        padding: 10px 14px;
+    }
+}
+
+/* ================= IPHONE SAFE AREA ================= */
+
+html {
+    width: 100%;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+#root {
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+/* ================= REDUCED MOTION ================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .content-1,
+    .content-2,
+    .content-3,
+    .content-4,
+    .content-5,
+    .content-6,
+    .content-7 {
+        animation-duration: 0.01ms;
+        animation-delay: 0ms;
+    }
+
+
+
+    
+/* iPhone video compatibility */
+
+.entry-video,
+.bg-video {
+  display: block;
+  max-width: 100%;
+  -webkit-transform: translateZ(0);
+}
+
+/* Main background video */
+
+.bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Prevent horizontal overflow */
+
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Music fallback button */
+
+.music-fallback {
+  position: fixed;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+}
+
+/* ================= IPHONE-SAFE INTRO ACTION ================= */
+#entry-gate {
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+.entry-open-button {
+    position: absolute;
+    left: 50%;
+    bottom: max(28px, env(safe-area-inset-bottom));
+    z-index: 2;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: calc(100% - 40px);
+    padding: 14px 24px;
+    border: 1px solid var(--gold-light);
+    border-radius: 999px;
+    background: rgba(82, 97, 72, 0.96);
+    color: #fff;
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.entry-open-button:focus-visible {
+    outline: 2px solid var(--gold-light);
+    outline-offset: 4px;
+}
+
+@supports (padding: env(safe-area-inset-bottom)) {
+    .entry-open-button {
+        bottom: calc(24px + env(safe-area-inset-bottom));
+    }
+}
+
+@media (max-width: 600px) {
+    #entry-gate .entry-video {
+        object-fit: contain;
+    }
+
+    .entry-open-button {
+        font-size: 11px;
+        padding: 13px 20px;
+        letter-spacing: 1px;
+    }
+}

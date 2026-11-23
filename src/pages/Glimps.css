@@ -1,0 +1,216 @@
+
+.section-label {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+.section-heading {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(3rem, 10vw, 5rem);
+    line-height: 1.1;
+    color: var(--terra-dark);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.memories-frame {
+    max-width: 420px;
+    margin: 3rem auto 0;
+    position: relative;
+}
+
+.memories-frame::before {
+    content: '';
+    position: absolute;
+    inset: -12px;
+    border: 1px solid rgba(184, 149, 90, 0.45);
+    border-radius: 2rem;
+    transform: rotate(2deg);
+    pointer-events: none;
+}
+
+.element {
+    font-style: italic;
+    color: var(--text-light);
+    font-size: 1.1rem;
+    margin-top: 2rem;
+}
+
+.memories-inner {
+    position: relative;
+    z-index: 1;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    border: 1px solid var(--gold-light);
+    box-shadow: var(--shadow-warm);
+    background: var(--cream-2);
+}
+
+.memories-inner video {
+    width: 100%;
+    display: block;
+    aspect-ratio: 1080 / 1600;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .section-label {
+        font-size: 0.55rem;
+        letter-spacing: 0.25em;
+    }
+
+    .section-heading {
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+
+    .memories-frame {
+        max-width: 100%;
+        margin: 2rem auto 0;
+        padding: 0 10px;
+    }
+
+    .memories-frame::before {
+        inset: -6px;
+        border-radius: 1.2rem;
+    }
+
+    .memories-inner {
+        border-radius: 1rem;
+    }
+
+    .memories-inner video {
+        aspect-ratio: 3 / 4;
+    }
+
+    .element {
+        font-size: 0.9rem;
+        margin-top: 1.2rem;
+    }
+}
+
+
+
+/* ROYAL GLIMPSE DECORATIONS */
+
+.glimps-top-ornament {
+    color: var(--gold);
+    font-size: 23px;
+    letter-spacing: 9px;
+    margin-bottom: 15px;
+}
+
+.glimps-flower {
+    color: var(--gold);
+    font-size: 22px;
+    padding: 0 12px;
+    line-height: 1;
+}
+
+/* VIDEO FRAME */
+
+.memories-frame {
+    position: relative;
+    max-width: 850px;
+    width: calc(100% - 30px);
+    margin: 35px auto;
+    padding: 10px;
+    border: 1px solid var(--gold);
+    border-radius: 4px;
+    background: var(--cream-2);
+    box-shadow: var(--shadow-gold);
+}
+
+.memories-inner {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+}
+
+.memories-inner video {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+    background: #1a0d08;
+}
+
+/* FLORAL CORNERS */
+
+.memories-corner {
+    position: absolute;
+    z-index: 2;
+    color: var(--gold);
+    font-size: 25px;
+    line-height: 1;
+    pointer-events: none;
+}
+
+.memories-tl {
+    top: 2px;
+    left: 2px;
+}
+
+.memories-tr {
+    top: 2px;
+    right: 2px;
+    transform: rotate(90deg);
+}
+
+.memories-bl {
+    bottom: 2px;
+    left: 2px;
+    transform: rotate(-90deg);
+}
+
+.memories-br {
+    bottom: 2px;
+    right: 2px;
+    transform: rotate(180deg);
+}
+
+/* BOTTOM TEXT */
+
+.glimps-bottom-ornament {
+    color: var(--gold);
+    font-family: Georgia, serif;
+    font-size: 12px;
+    font-style: italic;
+    letter-spacing: 1.5px;
+    margin: 25px auto 10px;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+    .glimps-top-ornament {
+        font-size: 19px;
+    }
+
+    .memories-frame {
+        width: calc(100% - 24px);
+        padding: 6px;
+        margin: 25px auto;
+    }
+
+    .memories-corner {
+        font-size: 18px;
+    }
+
+    .glimps-bottom-ornament {
+        font-size: 10px;
+        letter-spacing: 0.8px;
+    }
+}
+
