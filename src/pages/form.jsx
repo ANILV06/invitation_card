@@ -5,9 +5,14 @@ import { useState } from 'react';
 
 export default function Form() {
   const [result, setResult] = useState("");
+  const [isSending, setIsSending] = useState(false);
 
   const onSubmit = async (event) => {
     event.preventDefault();
+
+    if (isSending) return;
+
+    setIsSending(true);
     setResult("Sending...");
 
     const form = event.currentTarget;
@@ -15,25 +20,41 @@ export default function Form() {
 
     formData.append(
       "access_key",
-      "1158ca67-5643-4c45-9508-ccf8cf5566c9"
+      "59195520-0129-43b0-951b-71f008e948a9"
+    );
+
+    formData.append(
+      "subject",
+      "Wedding RSVP - Likith T N & Anusha S N"
     );
 
     try {
-      const response = await fetch("", {
-        method: "POST",
-        body: formData
-      });
+      const response = await fetch(
+        "https://api.web3forms.com/submit",
+        {
+          method: "POST",
+          body: formData
+        }
+      );
 
       const data = await response.json();
 
-      if (data.success) {
+      if (response.ok && data.success) {
         setResult("Thank you! Your wishes have been received ♥");
         form.reset();
       } else {
-        setResult("Something went wrong. Please try again.");
+        setResult(
+          data.message || "Something went wrong. Please try again."
+        );
       }
+
     } catch (error) {
-      setResult("Unable to submit. Please check your internet connection.");
+      setResult(
+        "Unable to submit. Please check your internet connection."
+      );
+
+    } finally {
+      setIsSending(false);
     }
   };
 
@@ -48,7 +69,9 @@ export default function Form() {
           <span></span>
         </div>
 
-        <span className="section-label">Join the Celebration</span>
+        <span className="section-label">
+          Join the Celebration
+        </span>
 
         <h2 className="section-heading">
           Celebrate
@@ -72,10 +95,13 @@ export default function Form() {
           onSubmit={onSubmit}
         >
 
+          {/* Guest Details */}
           <div className="form-card reveal revealed">
             <div className="form-card-ornament">✧</div>
 
-            <p className="form-card-title">Guest Details</p>
+            <p className="form-card-title">
+              Guest Details
+            </p>
 
             <div className="field-group">
               <label className="field-label" htmlFor="f-name">
@@ -108,10 +134,14 @@ export default function Form() {
             </div>
           </div>
 
+          {/* Wishes */}
           <div className="form-card reveal reveal-delay-2 revealed">
             <div className="form-card-ornament">✧</div>
 
-            <p className="form-card-title">Leave Us a Note</p>
+            <p className="form-card-title">
+              Leave Us a Note
+            </p>
+
             <p className="form-card-subtitle">
               Share a wish or memory.
             </p>
@@ -128,10 +158,14 @@ export default function Form() {
             </p>
           </div>
 
+          {/* Advice */}
           <div className="form-card reveal reveal-delay-3 revealed">
             <div className="form-card-ornament">✧</div>
 
-            <p className="form-card-title">Words for Forever</p>
+            <p className="form-card-title">
+              Words for Forever
+            </p>
+
             <p className="form-card-subtitle">
               Advice for married life.
             </p>
@@ -144,22 +178,26 @@ export default function Form() {
             ></textarea>
           </div>
 
+          {/* Submit */}
           <div className="reveal reveal-delay-3 revealed form-submit-wrap">
+
             <button
               type="submit"
               className="submit-btn"
               id="submit-btn"
-              disabled={result === "Sending..."}
+              disabled={isSending}
             >
               <span id="btn-text">
-                {result === "Sending..." ? "Sending..." : "Send Love"}
+                {isSending ? "Sending..." : "Send Love"}
               </span>
+
               <span className="submit-heart">♥</span>
             </button>
 
             <p className="form-result" aria-live="polite">
               {result}
             </p>
+
           </div>
 
         </form>
