@@ -78,7 +78,7 @@ function App() {
     <>
       <audio ref={audioRef} loop preload="none">
         <source
-          src="https://pub-1953a6673e864f3488c645252f75de98.r2.dev/Ashish%20%26%20Ayushi/Jashn-E-Bahaaraa%20(Instrumental%20-%20Flute)%20%5B-2w18bd-ZQ4%5D.mp3"
+          src="https://res.cloudinary.com/dwtzcpmzo/video/upload/v1795437924/aa_vwh6zg.mp3"
           type="audio/mpeg"
         />
       </audio>
