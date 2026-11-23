@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -75,3 +76,6 @@ npm install emailjs-com
 
 ### countdown
 npm install react-countdown
+=======
+# invitation_card
+>>>>>>> 459159cbd5fbab7dae5032cf35f8fa114d116921
