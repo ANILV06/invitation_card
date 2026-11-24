@@ -18,7 +18,7 @@ function App() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [entryStarted, setEntryStarted] = useState(false);
 
-  // Attempt automatic music playback when the website loads
+  // Attempt autoplay when the website loads
   useEffect(() => {
     const audio = audioRef.current;
 
@@ -27,38 +27,44 @@ function App() {
     audio.volume = 0.7;
 
     audio.play()
-      .then(() => {
-        setIsPlaying(true);
-      })
-      .catch((error) => {
-        console.log("Autoplay blocked. User can start music manually.", error);
-        setIsPlaying(false);
-      });
+      .then(() => setIsPlaying(true))
+      .catch(() => setIsPlaying(false));
   }, []);
 
-  // Opening video
+  // Open invitation and start music if autoplay was blocked
   const handleOpenInvitation = async () => {
+    const audio = audioRef.current;
     const introVideo = videoRef.current;
 
-    if (!introVideo) {
-      setShowMain(true);
-      return;
-    }
-
-    // Second tap skips the intro
     if (entryStarted) {
-      introVideo.pause();
+      if (introVideo) introVideo.pause();
       setShowMain(true);
       return;
     }
 
     setEntryStarted(true);
-    introVideo.muted = true;
 
-    try {
-      await introVideo.play();
-    } catch (error) {
-      console.warn("Intro video could not play.", error);
+    // Try starting music from the visitor's tap
+    if (audio && audio.paused) {
+      try {
+        await audio.play();
+        setIsPlaying(true);
+      } catch {
+        setIsPlaying(false);
+      }
+    }
+
+    // Play opening video
+    if (introVideo) {
+      introVideo.muted = true;
+
+      try {
+        await introVideo.play();
+      } catch (error) {
+        console.warn("Opening video could not play:", error);
+        setShowMain(true);
+      }
+    } else {
       setShowMain(true);
     }
   };
@@ -71,7 +77,7 @@ function App() {
     setShowMain(true);
   };
 
-  // Mute / unmute music
+  // Mute and unmute music
   const toggleAudio = async () => {
     const audio = audioRef.current;
 
@@ -85,7 +91,7 @@ function App() {
         await audio.play();
         setIsPlaying(true);
       } catch (error) {
-        console.warn("Music playback was blocked.", error);
+        console.warn("Music playback blocked:", error);
         setIsPlaying(false);
       }
     }
@@ -134,7 +140,7 @@ function App() {
       {/* MAIN WEBSITE */}
       {showMain && (
         <>
-          {/* MUSIC CONTROL */}
+          {/* MUSIC BUTTON */}
           <button
             id="audio-btn"
             type="button"
@@ -143,7 +149,13 @@ function App() {
             title={isPlaying ? "Mute music" : "Unmute music"}
           >
             {isPlaying ? (
-              <svg fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24" aria-hidden="true">
+              <svg
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -151,7 +163,13 @@ function App() {
                 />
               </svg>
             ) : (
-              <svg fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24" aria-hidden="true">
+              <svg
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
