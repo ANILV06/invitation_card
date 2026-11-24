@@ -1,4 +1,5 @@
-import { useRef, useState } from "react";
+```jsx
+import { useRef, useState, useEffect } from "react";
 import video from "./bg.mp4";
 
 import Hero from "./pages/hero-frame";
@@ -17,8 +18,25 @@ function App() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [entryStarted, setEntryStarted] = useState(false);
 
-  // The intro is optional: visitors can always skip it and open the invitation.
-  // Keep it muted because iOS Safari restricts videos with sound until a gesture.
+  // Attempt automatic music playback when the website loads
+  useEffect(() => {
+    const audio = audioRef.current;
+
+    if (!audio) return;
+
+    audio.volume = 0.7;
+
+    audio.play()
+      .then(() => {
+        setIsPlaying(true);
+      })
+      .catch((error) => {
+        console.log("Autoplay blocked. User can start music manually.", error);
+        setIsPlaying(false);
+      });
+  }, []);
+
+  // Opening video
   const handleOpenInvitation = async () => {
     const introVideo = videoRef.current;
 
@@ -27,7 +45,7 @@ function App() {
       return;
     }
 
-    // A second tap skips the intro immediately.
+    // Second tap skips the intro
     if (entryStarted) {
       introVideo.pause();
       setShowMain(true);
@@ -40,8 +58,7 @@ function App() {
     try {
       await introVideo.play();
     } catch (error) {
-      // Never leave the visitor stuck on the intro if Safari blocks playback.
-      console.warn("Intro video could not play; opening invitation instead.", error);
+      console.warn("Intro video could not play.", error);
       setShowMain(true);
     }
   };
@@ -51,38 +68,40 @@ function App() {
   };
 
   const handleVideoError = () => {
-    // A missing/unsupported intro video must not prevent access to the invitation.
     setShowMain(true);
   };
 
+  // Mute / unmute music
   const toggleAudio = async () => {
     const audio = audioRef.current;
+
     if (!audio) return;
 
     if (isPlaying) {
       audio.pause();
       setIsPlaying(false);
-      return;
-    }
-
-    try {
-      await audio.play();
-      setIsPlaying(true);
-    } catch (error) {
-      console.warn("Music playback was blocked by the browser.", error);
-      setIsPlaying(false);
+    } else {
+      try {
+        await audio.play();
+        setIsPlaying(true);
+      } catch (error) {
+        console.warn("Music playback was blocked.", error);
+        setIsPlaying(false);
+      }
     }
   };
 
   return (
     <>
-      <audio ref={audioRef} loop preload="none">
+      {/* BACKGROUND MUSIC */}
+      <audio ref={audioRef} loop preload="auto">
         <source
           src="https://res.cloudinary.com/dwtzcpmzo/video/upload/v1795437924/aa_vwh6zg.mp3"
           type="audio/mpeg"
         />
       </audio>
 
+      {/* OPENING VIDEO */}
       {!showMain && (
         <div id="entry-gate">
           <video
@@ -105,27 +124,39 @@ function App() {
             className="entry-open-button"
             onClick={handleOpenInvitation}
           >
-            {entryStarted ? "Skip Intro · Open Invitation" : "Tap to Open Invitation"}
+            {entryStarted
+              ? "Skip Intro · Open Invitation"
+              : "Tap to Open Invitation"}
           </button>
         </div>
       )}
 
+      {/* MAIN WEBSITE */}
       {showMain && (
         <>
+          {/* MUSIC CONTROL */}
           <button
             id="audio-btn"
             type="button"
             onClick={toggleAudio}
-            aria-label={isPlaying ? "Pause music" : "Play music"}
-            title={isPlaying ? "Pause music" : "Play music"}
+            aria-label={isPlaying ? "Mute music" : "Unmute music"}
+            title={isPlaying ? "Mute music" : "Unmute music"}
           >
             {isPlaying ? (
               <svg fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M11 5L6 9H2v6h4l5 4V5zM19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M11 5L6 9H2v6h4l5 4V5zM19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"
+                />
               </svg>
             ) : (
               <svg fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6"
+                />
               </svg>
             )}
           </button>
@@ -160,3 +191,4 @@ function App() {
 }
 
 export default App;
+```
