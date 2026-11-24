@@ -76,7 +76,7 @@ function App() {
 
   return (
     <>
-      <audio ref={audioRef} loop preload="none">
+      <audio ref={audioRef} loop preload="auto">
         <source
           src="https://res.cloudinary.com/dwtzcpmzo/video/upload/v1795437924/aa_vwh6zg.mp3"
           type="audio/mpeg"
