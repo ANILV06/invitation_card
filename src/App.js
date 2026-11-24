@@ -1,4 +1,4 @@
-```jsx
+
 import { useRef, useState, useEffect } from "react";
 import video from "./bg.mp4";
 
@@ -18,21 +18,24 @@ function App() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [entryStarted, setEntryStarted] = useState(false);
 
-  // Automatically play music when the website loads
+  // Attempt to autoplay music when the main invitation opens.
   useEffect(() => {
-    const audio = audioRef.current;
+    if (!showMain) return;
 
+    const audio = audioRef.current;
     if (!audio) return;
 
     audio.volume = 0.7;
 
     audio.play()
       .then(() => setIsPlaying(true))
-      .catch(() => setIsPlaying(false));
-  }, []);
+      .catch((error) => {
+        console.warn("Music autoplay was blocked by the browser.", error);
+        setIsPlaying(false);
+      });
+  }, [showMain]);
 
-  // The intro is optional: visitors can always skip it and open the invitation.
-  // Keep it muted because iOS Safari restricts videos with sound until a gesture.
+  // Intro video
   const handleOpenInvitation = async () => {
     const introVideo = videoRef.current;
 
@@ -41,7 +44,6 @@ function App() {
       return;
     }
 
-    // A second tap skips the intro immediately.
     if (entryStarted) {
       introVideo.pause();
       setShowMain(true);
@@ -54,7 +56,7 @@ function App() {
     try {
       await introVideo.play();
     } catch (error) {
-      console.warn("Intro video could not play; opening invitation instead.", error);
+      console.warn("Intro video could not play.", error);
       setShowMain(true);
     }
   };
@@ -67,6 +69,7 @@ function App() {
     setShowMain(true);
   };
 
+  // Play / Pause music
   const toggleAudio = async () => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -172,4 +175,3 @@ function App() {
 }
 
 export default App;
-```
