@@ -55,34 +55,47 @@ function App() {
     setShowMain(true);
   };
 
-  const toggleAudio = async () => {
+    const toggleAudio = () => {
     const audio = audioRef.current;
+
     if (!audio) return;
 
     if (isPlaying) {
       audio.pause();
-      setIsPlaying(false);
-      return;
+    } else {
+      audio.play();
     }
 
-    try {
-      await audio.play();
-      setIsPlaying(true);
-    } catch (error) {
-      console.warn("Music playback was blocked by the browser.", error);
-      setIsPlaying(false);
-    }
+    setIsPlaying(!isPlaying);
   };
 
   return (
-    <>
-      <audio ref={audioRef} loop preload="auto">
+    <section>
+
+      {/* ✅ AUDIO */}
+      <audio ref={audioRef} loop preload="metadata">
         <source
-          src="https://res.cloudinary.com/dwtzcpmzo/video/upload/v1795437924/aa_vwh6zg.mp3"
+          src="ttps://res.cloudinary.com/dwtzcpmzo/video/upload/v1795437924/aa_vwh6zg.mp3"
           type="audio/mpeg"
         />
       </audio>
 
+      {/* ✅ AUDIO BUTTON */}
+      {showMain && (
+        <button id="audio-btn" onClick={toggleAudio}>
+          {isPlaying ? (
+            <svg fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round"
+                d="M11 5L6 9H2v6h4l5 4V5zM19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07" />
+            </svg>
+          ) : (
+            <svg fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round"
+                d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" />
+            </svg>
+          )}
+        </button>
+      )}
       {!showMain && (
         <div id="entry-gate">
           <video
