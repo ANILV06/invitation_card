@@ -2,6 +2,8 @@
 import { useRef, useState, useEffect } from "react";
 import video from "./bg.mp4";
 
+import PetalFall from "./PetalFall";
+
 import Hero from "./pages/hero-frame";
 import Timer from "./pages/Countdown";
 import Glimps from "./pages/Glimps";
@@ -18,7 +20,7 @@ function App() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [entryStarted, setEntryStarted] = useState(false);
 
-  // Attempt to autoplay music when the main invitation opens.
+  // Autoplay music when the main invitation opens
   useEffect(() => {
     if (!showMain) return;
 
@@ -120,13 +122,17 @@ function App() {
             className="entry-open-button"
             onClick={handleOpenInvitation}
           >
-            {entryStarted ? "Skip Intro · Open Invitation" : "Tap to Open Invitation"}
+            {entryStarted
+              ? "Skip Intro · Open Invitation"
+              : "Tap to Open Invitation"}
           </button>
         </div>
       )}
 
       {showMain && (
         <>
+          <PetalFall />
+
           <button
             id="audio-btn"
             type="button"
@@ -135,12 +141,32 @@ function App() {
             title={isPlaying ? "Pause music" : "Play music"}
           >
             {isPlaying ? (
-              <svg fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M11 5L6 9H2v6h4l5 4V5zM19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07" />
+              <svg
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M11 5L6 9H2v6h4l5 4V5zM19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"
+                />
               </svg>
             ) : (
-              <svg fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" />
+              <svg
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M11 5L6 9H2v6h4l5 4v-6zM23 9l-6 6M17 9l6 6"
+                />
               </svg>
             )}
           </button>
